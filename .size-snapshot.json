@@ -1,0 +1,36 @@
+{
+  "./dist/react-craft.cjs.production.js": {
+    "bundled": 510,
+    "minified": 274,
+    "gzipped": 212
+  },
+  "./dist/react-craft.cjs.development.js": {
+    "bundled": 510,
+    "minified": 274,
+    "gzipped": 212
+  },
+  "./dist/react-craft.umd.production.js": {
+    "bundled": 876,
+    "minified": 434,
+    "gzipped": 291
+  },
+  "./dist/react-craft.umd.development.js": {
+    "bundled": 876,
+    "minified": 434,
+    "gzipped": 291
+  },
+  "dist/react-craft.esm.js": {
+    "bundled": 409,
+    "minified": 201,
+    "gzipped": 160,
+    "treeshaked": {
+      "rollup": {
+        "code": 14,
+        "import_statements": 14
+      },
+      "webpack": {
+        "code": 998
+      }
+    }
+  }
+}

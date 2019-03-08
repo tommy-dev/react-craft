@@ -1,0 +1,113 @@
+{
+  "name": "react-craft",
+  "description": "Component building blocks made with React hooks",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "tommy-dev",
+  "repository": "tommy-dev/react-craft",
+  "keywords": ["react-craft", "react", "react-dom", "react hooks"],
+  "main": "dist/index.js",
+  "module": "dist/react-craft.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": ["dist"],
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "scripts": {
+    "test": "jest --env=jsdom",
+    "test:watch": "npm run test -- --watch",
+    "start":
+      "cp-cli ./index.js ./dist/index.js && cross-env NODE_ENV=development rollup -w -c | tsc -w -p tsconfig.base.json",
+    "prebuild": "rimraf dist",
+    "build":
+      "cross-env NODE_ENV=production tsc -p tsconfig.base.json  && rollup -c && rimraf compiled && cp-cli ./index.js ./dist/index.js",
+    "prepublish": "npm run build",
+    "format":
+      "prettier --trailing-comma es5 --single-quote --write 'src/**/*' 'test/**/*' 'README.md'",
+    "precommit": "lint-staged",
+    "size": "size-limit"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "tslib": "^1.9.3"
+  },
+  "optionalDependencies": {},
+  "resolutions": {
+    "@types/react": "16.8.7",
+    "@types/react-dom": "16.8.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@types/jest": "^24.0.9",
+    "@types/react": "16.8.7",
+    "@types/react-dom": "16.8.2",
+    "awesome-typescript-loader": "^3.4.1",
+    "babel-plugin-annotate-pure-calls": "^0.4.0",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-transform-rename-import": "^2.3.0",
+    "cp-cli": "^1.1.2",
+    "cross-env": "5.0.5",
+    "husky": "0.14.3",
+    "jest": "^24.3.1",
+    "lint-staged": "4.0.2",
+    "prettier": "1.11.1",
+    "raw-loader": "^0.5.1",
+    "react": "16.8.4",
+    "react-dom": "16.8.4",
+    "react-testing-library": "^6.0.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-size-snapshot": "^0.8.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-terser": "^4.0.2",
+    "size-limit": "^0.17.0",
+    "ts-jest": "^22.4.6",
+    "tsc-watch": "^1.0.21",
+    "tslint": "^5.11.0",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3333"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "semi": true
+  },
+  "jest": {
+    "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
+    "setupFilesAfterEnv": [
+      "react-testing-library/cleanup-after-each.js",
+      "<rootDir>/test/setupTests.ts"
+    ],
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": ["<rootDir>/test/**/*.ts(x)"],
+    "transformIgnorePatterns": ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+    "moduleFileExtensions": ["ts", "tsx", "js", "json"]
+  },
+  "size-limit": [
+    {
+      "path": "./dist/index.js",
+      "limit": "14 kB"
+    },
+    {
+      "path": "./dist/react-craft.esm.js",
+      "limit": "14 kB"
+    },
+    {
+      "path": "./dist/react-craft.umd.production.js",
+      "limit": "14 kB"
+    }
+  ]
+}
