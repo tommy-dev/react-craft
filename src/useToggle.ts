@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { useState, useCallback } from 'react';
 
 export type UseToggle = (on?: boolean) => [boolean, (on?: boolean) => void];
 
 export const useToggle: UseToggle = initialValue => {
-  const [on, setOn] = React.useState<boolean>(initialValue || false);
+  const [on, setOn] = useState<boolean>(initialValue || false);
 
-  const toggle = React.useCallback(
+  const toggle = useCallback(
     (on?: boolean) => {
       if (typeof on !== 'undefined') {
         setOn(!!on);
@@ -19,3 +19,5 @@ export const useToggle: UseToggle = initialValue => {
 
   return [on, toggle];
 };
+
+export default useToggle;

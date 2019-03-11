@@ -20,6 +20,7 @@ Component building blocks made with <a href="https://reactjs.org/docs/hooks-intr
 <br/>
 
 * [`useToggle`](./docs/api/useToggle.md) &mdash; toggle or set a boolean state.
+* [`useList`](./docs/api/useList.md) &mdash; store and manipulate a list structure.
 
 <br/>
 <br/>

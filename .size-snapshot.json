@@ -1,28 +1,28 @@
 {
   "./dist/react-craft.cjs.production.js": {
-    "bundled": 510,
-    "minified": 274,
-    "gzipped": 212
+    "bundled": 1838,
+    "minified": 854,
+    "gzipped": 371
   },
   "./dist/react-craft.cjs.development.js": {
-    "bundled": 510,
-    "minified": 274,
-    "gzipped": 212
+    "bundled": 1838,
+    "minified": 854,
+    "gzipped": 371
   },
   "./dist/react-craft.umd.production.js": {
-    "bundled": 876,
-    "minified": 434,
-    "gzipped": 291
+    "bundled": 2207,
+    "minified": 988,
+    "gzipped": 448
   },
   "./dist/react-craft.umd.development.js": {
-    "bundled": 876,
-    "minified": 434,
-    "gzipped": 291
+    "bundled": 2207,
+    "minified": 988,
+    "gzipped": 448
   },
   "dist/react-craft.esm.js": {
-    "bundled": 409,
-    "minified": 201,
-    "gzipped": 160,
+    "bundled": 1540,
+    "minified": 759,
+    "gzipped": 316,
     "treeshaked": {
       "rollup": {
         "code": 14,

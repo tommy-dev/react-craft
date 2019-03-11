@@ -1,6 +1,7 @@
 import { fireEvent, render } from 'react-testing-library';
 import * as React from 'react';
-import { useToggle } from '../src/useToggle';
+import useToggle from '../src/useToggle';
+import * as useNamed from '../src/useToggle';
 
 const Test = props => {
   const [on, toggle] = useToggle(props.on);
@@ -97,7 +98,7 @@ test('should update the value if toggle is called by click', () => {
 test('should update the value if toggle is called', () => {
   const Test = props => {
     const [on, toggle] = useToggle();
-    // pass empty array into second args to trigger toggle once only
+
     React.useEffect(() => {
       toggle();
     }, []);
@@ -107,4 +108,15 @@ test('should update the value if toggle is called', () => {
 
   const { container } = render(<Test />);
   expect(container.querySelector('div').textContent).toBe('true');
+});
+
+test('should work with named exports as object', () => {
+  const Test = props => {
+    const [on, toggle] = useNamed.useToggle(props.on);
+    return <div onClick={() => toggle()}>{on ? 'true' : 'false'}</div>;
+  };
+
+  const { container } = render(<Test on={true} />);
+  const div = container.querySelector('div');
+  expect(div.textContent).toBe('true');
 });
