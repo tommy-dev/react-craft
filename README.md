@@ -13,6 +13,8 @@
 
 </div>
 
+#### `npm i react-craft`
+
 <br/>
 
 Component building blocks made with <a href="https://reactjs.org/docs/hooks-intro.html">React Hooks</a>.
