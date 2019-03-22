@@ -11,7 +11,6 @@ export const useToggle: UseToggle = initialValue => {
         setOn(!!on);
         return;
       }
-
       setOn(on => !on);
     },
     [setOn]

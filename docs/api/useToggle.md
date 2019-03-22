@@ -1,6 +1,7 @@
 # `useToggle`
 
 React hook to toggle or set a boolean state. 
+
 Some potential use cases: custom checkbox, radio button, popup, navigation bar, etc.
 
 CodeSandbox Demo (ReactDOM) https://codesandbox.io/s/q8yk1ymk5j
