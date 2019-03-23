@@ -1,4 +1,4 @@
-# `useList`
+# `useMap`
 
 React hook for key-value structures.
 
