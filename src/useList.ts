@@ -1,46 +1,36 @@
 import { useState } from 'react';
 
 export interface Methods<T> {
-  set: (items: T[]) => void;
-  add: (item: T | T[]) => void;
-  addAt: (index: number, item: T | T[]) => void;
-  updateAt: (index: number, item: T) => void;
-  removeAt: (index: number) => void;
+  add: (item: T) => void;
+  addAt: (index: number, item: T) => void;
+  addRange: (items: T[]) => void;
+  addRangeAt: (index: number, items: T[]) => void;
   filter: (fn: (item: T) => boolean) => void;
+  removeAt: (index: number) => void;
+  set: (items: T[]) => void;
   sort: (fn?: (a: T, b: T) => number) => void;
+  updateAt: (index: number, item: T) => void;
 }
 
-export const useList = <T>(initialList: T[] = []): [T[], Methods<T>] => {
-  const [list, set] = useState<T[]>(initialList || []);
-
-  const addFn = (items: T | T[]) => {
-    if (Array.isArray(items)) {
-      set([...list, ...items]);
-    } else {
-      set([...list, items]);
-    }
-  };
-
-  const addAtFn = (index: number, items: T | T[]) => {
-    if (Array.isArray(items)) {
-      set([...list.slice(0, index), ...items, ...list.slice(index)]);
-    } else {
-      set([...list.slice(0, index), items, ...list.slice(index)]);
-    }
-  };
+export const useList = <T>(initial: T[] = []): [T[], Methods<T>] => {
+  const [array, setArray] = useState<T[]>(initial);
 
   return [
-    list,
+    array,
     {
-      set,
-      add: item => addFn(item),
-      addAt: (index, item) => addAtFn(index, item),
+      set: setArray,
+      add: item => setArray([...array, item]),
+      addRange: items => setArray([...array, ...items]),
+      addAt: (index, item) =>
+        setArray([...array.slice(0, index), item, ...array.slice(index)]),
+      addRangeAt: (index, items) =>
+        setArray([...array.slice(0, index), ...items, ...array.slice(index)]),
       updateAt: (index, item) =>
-        set([...list.slice(0, index), item, ...list.slice(index + 1)]),
+        setArray([...array.slice(0, index), item, ...array.slice(index + 1)]),
       removeAt: index =>
-        set([...list.slice(0, index), ...list.slice(index + 1)]),
-      filter: fn => set(list.filter(fn)),
-      sort: (fn?) => set([...list].sort(fn)),
+        setArray([...array.slice(0, index), ...array.slice(index + 1)]),
+      filter: fn => setArray(array.filter(fn)),
+      sort: (fn?) => setArray([...array].sort(fn)),
     },
   ];
 };

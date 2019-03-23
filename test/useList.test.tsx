@@ -6,9 +6,10 @@ import useList from '../src/useList';
 import * as useNamed from '../src/useList';
 
 const TestBasic = props => {
-  const [list, { set, add, addAt, updateAt, filter, sort }] = useList(
-    props.initialList
-  );
+  const [
+    list,
+    { set, add, addRange, addRangeAt, addAt, updateAt, filter, sort },
+  ] = useList(props.initialList);
 
   return (
     <div>
@@ -16,9 +17,9 @@ const TestBasic = props => {
       <button id="reset" onClick={() => set([])} />
       <button id="set" onClick={() => set(['2'])} />
       <button id="add" onClick={() => add(1)} />
-      <button id="addItems" onClick={() => add([7, 8, 9])} />
+      <button id="addRange" onClick={() => addRange([7, 8, 9])} />
       <button id="addAt" onClick={() => addAt(1, 19)} />
-      <button id="addItemsAt" onClick={() => addAt(2, [7, 8, 9])} />
+      <button id="addRangeAt" onClick={() => addRangeAt(2, [7, 8, 9])} />
       <button id="remove" onClick={() => filter(item => !(item === 2))} />
       <button id="updateAt" onClick={() => updateAt(1, 12)} />
       <button
@@ -39,9 +40,9 @@ const TestBasic = props => {
   );
 };
 
-describe('component-decoupled hook tests', () => {
-  afterEach(cleanup);
+afterEach(cleanup);
 
+describe('component-decoupled hook tests', () => {
   test('should render JSX', () => {
     const { container } = render(<TestBasic />);
     const { result } = renderHook(() => useList([container]));
@@ -158,14 +159,14 @@ test('should add to the end of an existing list', () => {
   const { container } = render(<TestBasic initialList={[1, 2, 3]} />);
   const values = container.querySelector('#values');
   const add = container.querySelector('#add');
-  const addItems = container.querySelector('#addItems');
+  const addRange = container.querySelector('#addRange');
 
   expect(values.textContent).toBe('1|2|3');
 
   fireEvent.click(add);
   expect(values.textContent).toBe('1|2|3|1');
 
-  fireEvent.click(addItems);
+  fireEvent.click(addRange);
   expect(values.textContent).toBe('1|2|3|1|7|8|9');
 });
 
@@ -181,9 +182,9 @@ test('should add to an empty list', () => {
 test('should add a list to an empty list', () => {
   const { container } = render(<TestBasic />);
   const values = container.querySelector('#values');
-  const addItems = container.querySelector('#addItems');
+  const addRange = container.querySelector('#addRange');
 
-  fireEvent.click(addItems);
+  fireEvent.click(addRange);
   expect(values.textContent).toBe('7|8|9');
 });
 
@@ -191,13 +192,13 @@ test('should add to the specified index of a list', () => {
   const { container } = render(<TestBasic initialList={[1, 2, 3]} />);
   const values = container.querySelector('#values');
   const addAt = container.querySelector('#addAt');
-  const addItemsAt = container.querySelector('#addItemsAt');
+  const addRangeAt = container.querySelector('#addRangeAt');
 
   expect(values.textContent).toBe('1|2|3');
 
   fireEvent.click(addAt);
   expect(values.textContent).toBe('1|19|2|3');
-  fireEvent.click(addItemsAt);
+  fireEvent.click(addRangeAt);
   expect(values.textContent).toBe('1|19|7|8|9|2|3');
 });
 
@@ -213,9 +214,9 @@ test('should add to an empty list when add index specified', () => {
 test('should add a list to an empty list when add index specified', () => {
   const { container } = render(<TestBasic />);
   const values = container.querySelector('#values');
-  const addItemsAt = container.querySelector('#addItemsAt');
+  const addRangeAt = container.querySelector('#addRangeAt');
 
-  fireEvent.click(addItemsAt);
+  fireEvent.click(addRangeAt);
   expect(values.textContent).toBe('7|8|9');
 });
 

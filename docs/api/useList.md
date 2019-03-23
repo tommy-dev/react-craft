@@ -1,6 +1,8 @@
 # `useList`
 
-React hook to store and manipulate a list structure.
+React hook for list structures.
+
+A list is a very fundamental structure used for many things. For example, calculator logic with a list of mathematical entries: https://github.com/tommy-dev/react-calculator. 
 
 CodeSandbox Demo (ReactDOM) https://codesandbox.io/s/6z2330q1pr
 

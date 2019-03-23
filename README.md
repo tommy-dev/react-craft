@@ -21,8 +21,12 @@ Component building blocks made with <a href="https://reactjs.org/docs/hooks-intr
 <br/>
 <br/>
 
-* [`useToggle`](./docs/api/useToggle.md) &mdash; toggle or set a boolean state.
-* [`useList`](./docs/api/useList.md) &mdash; store and manipulate a list structure.
+* [`useToggle`](./docs/api/useToggle.md) &mdash; React hook to toggle or set a boolean state. 
+   * CodeSandbox Demo (ReactDOM) https://codesandbox.io/s/q8yk1ymk5j
+* [`useList`](./docs/api/useList.md) &mdash; React hook for list structures.
+   * CodeSandbox Demo (ReactDOM) https://codesandbox.io/s/6z2330q1pr
+* [`useMap`](./docs/api/useMap.md) &mdash; React hook for key-value structures.
+   * CodeSandbox Demo (ReactDOM) https://codesandbox.io/s/jzrvn0zzm9
 
 <br/>
 <br/>
